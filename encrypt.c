@@ -911,12 +911,13 @@ static int enc_key_init(enc_info * info, int method, const char *pass)
 
 #if defined(USE_CRYPTO_OPENSSL)
     OpenSSL_add_all_algorithms();
+#else
+    cipher_kt_t cipher_info;
 #endif
 
     uint8_t iv[MAX_IV_LENGTH];
 
     cipher_kt_t *cipher = NULL;
-    cipher_kt_t cipher_info;
 
 
     if (method == SALSA20 || method == CHACHA20) {
